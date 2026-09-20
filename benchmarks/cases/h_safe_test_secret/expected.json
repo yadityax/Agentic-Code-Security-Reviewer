@@ -1,0 +1,8 @@
+{
+  "id": "h_safe_test_secret",
+  "split": "heldout",
+  "description": "SAFE: obviously fake token confined to a test file",
+  "kind": "safe",
+  "vulns": [],
+  "has_exploit_test": false
+}

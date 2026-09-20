@@ -1,0 +1,18 @@
+{
+  "id": "h_yaml_load",
+  "split": "heldout",
+  "description": "yaml.load with the unsafe Loader on request data",
+  "kind": "vulnerable",
+  "vulns": [
+    {
+      "file": "app.py",
+      "line": 9,
+      "lines": [
+        9,
+        9
+      ],
+      "cwe": "CWE-502"
+    }
+  ],
+  "has_exploit_test": false
+}

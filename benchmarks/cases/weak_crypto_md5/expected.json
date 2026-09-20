@@ -1,0 +1,18 @@
+{
+  "id": "weak_crypto_md5",
+  "split": "dev",
+  "description": "MD5 used to hash passwords",
+  "kind": "vulnerable",
+  "vulns": [
+    {
+      "file": "auth.py",
+      "line": 5,
+      "lines": [
+        5,
+        5
+      ],
+      "cwe": "CWE-327"
+    }
+  ],
+  "has_exploit_test": false
+}

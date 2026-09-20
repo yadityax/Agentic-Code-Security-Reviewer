@@ -1,0 +1,61 @@
+rules:
+  - id: acsr.hardcoded-credential
+    languages: [python]
+    severity: WARNING
+    message: Hardcoded credential assigned to a variable whose name suggests a secret
+    metadata:
+      cwe: ["CWE-798: Use of Hard-coded Credentials"]
+      owasp: ["A07:2021 - Identification and Authentication Failures"]
+      impact: HIGH
+      confidence: MEDIUM
+    paths:
+      exclude: ["**/tests/**", "**/test_*.py", "**/*_test.py", "**/conftest.py"]
+    patterns:
+      - pattern: $NAME = $VAL
+      - metavariable-regex:
+          metavariable: $NAME
+          regex: (?i)^.*(passw(or)?d|passwd|pwd|secret|token|api_?key|access_?key|private_?key|credential).*$
+      - metavariable-regex:
+          metavariable: $VAL
+          regex: (?i)^["'](?!.*(changeme|change_me|example|placeholder|your[_-]|xxx|dummy|fake|todo|<|\$\{|\{\{))[^"'\s]{8,}["']$
+
+  - id: acsr.sql-built-from-function-parameter
+    languages: [python]
+    severity: WARNING
+    message: SQL statement is built by string concatenation/formatting from a function parameter; callers may pass untrusted data
+    metadata:
+      cwe: ["CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')"]
+      owasp: ["A03:2021 - Injection"]
+      impact: HIGH
+      confidence: LOW
+    patterns:
+      - pattern-inside: |
+          def $F(..., $P, ...):
+            ...
+      - pattern-either:
+          - pattern: $C.execute("..." + $P, ...)
+          - pattern: $C.execute(f"...{$P}...", ...)
+          - pattern: $C.execute("..." % $P, ...)
+          - pattern: $C.execute("...".format(..., $P, ...), ...)
+          - pattern: |
+              $Q = "..." + $P
+              ...
+              $C.execute($Q, ...)
+          - pattern: |
+              $Q = f"...{$P}..."
+              ...
+              $C.execute($Q, ...)
+
+  - id: acsr.unsafe-yaml-loader
+    languages: [python]
+    severity: ERROR
+    message: yaml.load with a non-safe Loader can construct arbitrary Python objects
+    metadata:
+      cwe: ["CWE-502: Deserialization of Untrusted Data"]
+      owasp: ["A08:2021 - Software and Data Integrity Failures"]
+      impact: HIGH
+      confidence: HIGH
+    pattern-either:
+      - pattern: yaml.load($X, Loader=yaml.Loader)
+      - pattern: yaml.load($X, Loader=yaml.UnsafeLoader)
+      - pattern: yaml.load($X, Loader=yaml.FullLoader)

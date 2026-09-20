@@ -1,0 +1,8 @@
+{
+  "id": "safe_env_secrets_yaml",
+  "split": "dev",
+  "description": "SAFE: secrets from the environment, yaml.safe_load, placeholder value",
+  "kind": "safe",
+  "vulns": [],
+  "has_exploit_test": false
+}

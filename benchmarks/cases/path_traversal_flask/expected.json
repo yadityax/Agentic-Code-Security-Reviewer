@@ -1,0 +1,18 @@
+{
+  "id": "path_traversal_flask",
+  "split": "dev",
+  "description": "Path traversal in file download",
+  "kind": "vulnerable",
+  "vulns": [
+    {
+      "file": "app.py",
+      "line": 12,
+      "lines": [
+        12,
+        12
+      ],
+      "cwe": "CWE-22"
+    }
+  ],
+  "has_exploit_test": true
+}

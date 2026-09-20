@@ -1,0 +1,242 @@
+{
+ "summary": {
+  "targets_real": 9,
+  "targets_false_alarm": 0,
+  "fix_success_rate": 0.6666666666666666,
+  "exploit_oracle_pass_rate": 0.75,
+  "oracle_cases": 4,
+  "post_fix_test_pass_rate": 0.7777777777777778,
+  "security_rescan_pass_rate": 0.8571428571428571,
+  "avg_attempts_per_target": 1.5555555555555556,
+  "human_intervention_rate": 0.4,
+  "by_class": {
+   "Broken access control": {
+    "targets": 1,
+    "verified": 1
+   },
+   "CWE-939": {
+    "targets": 1,
+    "verified": 0
+   },
+   "Command injection": {
+    "targets": 1,
+    "verified": 1
+   },
+   "Insecure deserialization": {
+    "targets": 1,
+    "verified": 1
+   },
+   "Path traversal": {
+    "targets": 1,
+    "verified": 0
+   },
+   "SQL injection": {
+    "targets": 1,
+    "verified": 1
+   },
+   "SSRF": {
+    "targets": 1,
+    "verified": 0
+   },
+   "Weak randomness": {
+    "targets": 1,
+    "verified": 1
+   },
+   "XSS": {
+    "targets": 1,
+    "verified": 1
+   }
+  },
+  "tokens_per_case": 4116.0,
+  "latency_per_case_s": 93.7428212738887
+ },
+ "cases": [
+  {
+   "id": "h_cmdi_fastapi",
+   "kind": "vulnerable",
+   "remediations": [
+    {
+     "case_class": "Command injection",
+     "outcome": "verified",
+     "attempts": 1,
+     "real": true,
+     "tests_attempts": 1,
+     "tests_passed": 1,
+     "rescan_attempts": 1,
+     "rescan_passed": 1,
+     "failure": ""
+    }
+   ],
+   "oracle_passes": null,
+   "has_exploit_test": false,
+   "tokens": 2788,
+   "latency_s": 37.76410853792913,
+   "needs_review": 0
+  },
+  {
+   "id": "h_missing_auth_admin",
+   "kind": "vulnerable",
+   "remediations": [
+    {
+     "case_class": "Broken access control",
+     "outcome": "verified",
+     "attempts": 2,
+     "real": true,
+     "tests_attempts": 1,
+     "tests_passed": 1,
+     "rescan_attempts": 1,
+     "rescan_passed": 1,
+     "failure": "`old` text was not found exactly once in app.py; copy it verbatim from the file"
+    }
+   ],
+   "oracle_passes": true,
+   "has_exploit_test": true,
+   "tokens": 3741,
+   "latency_s": 97.31601100508124,
+   "needs_review": 0
+  },
+  {
+   "id": "h_path_send_file",
+   "kind": "vulnerable",
+   "remediations": [
+    {
+     "case_class": "Path traversal",
+     "outcome": "failed",
+     "attempts": 3,
+     "real": true,
+     "tests_attempts": 1,
+     "tests_passed": 1,
+     "rescan_attempts": 1,
+     "rescan_passed": 0,
+     "failure": "patch adds new third-party dependencies: ['werkzeug']"
+    }
+   ],
+   "oracle_passes": null,
+   "has_exploit_test": false,
+   "tokens": 7072,
+   "latency_s": 156.4527231559623,
+   "needs_review": 0
+  },
+  {
+   "id": "h_sqli_format",
+   "kind": "vulnerable",
+   "remediations": [
+    {
+     "case_class": "SQL injection",
+     "outcome": "verified",
+     "attempts": 1,
+     "real": true,
+     "tests_attempts": 1,
+     "tests_passed": 1,
+     "rescan_attempts": 1,
+     "rescan_passed": 1,
+     "failure": ""
+    }
+   ],
+   "oracle_passes": true,
+   "has_exploit_test": true,
+   "tokens": 2715,
+   "latency_s": 64.85046872217208,
+   "needs_review": 0
+  },
+  {
+   "id": "h_ssrf_urllib",
+   "kind": "vulnerable",
+   "remediations": [
+    {
+     "case_class": "SSRF",
+     "outcome": "declined",
+     "attempts": 2,
+     "real": true,
+     "tests_attempts": 2,
+     "tests_passed": 0,
+     "rescan_attempts": 0,
+     "rescan_passed": 0,
+     "failure": "LLM unavailable: LLM HTTP 400: {\"error\":{\"message\":\"Failed to validate JSON. Please adjust your prompt. See 'failed_generation' for more "
+    },
+    {
+     "case_class": "CWE-939",
+     "outcome": "declined",
+     "attempts": 0,
+     "real": true,
+     "tests_attempts": 0,
+     "tests_passed": 0,
+     "rescan_attempts": 0,
+     "rescan_passed": 0,
+     "failure": "LLM unavailable: LLM HTTP 400: {\"error\":{\"message\":\"Failed to validate JSON. Please adjust your prompt. See 'failed_generation' for more "
+    }
+   ],
+   "oracle_passes": false,
+   "has_exploit_test": true,
+   "tokens": 5397,
+   "latency_s": 100.82231988804415,
+   "needs_review": 0
+  },
+  {
+   "id": "h_weak_random_token",
+   "kind": "vulnerable",
+   "remediations": [
+    {
+     "case_class": "Weak randomness",
+     "outcome": "verified",
+     "attempts": 3,
+     "real": true,
+     "tests_attempts": 1,
+     "tests_passed": 1,
+     "rescan_attempts": 1,
+     "rescan_passed": 1,
+     "failure": "`old` text was not found exactly once in tokens.py; copy it verbatim from the file"
+    }
+   ],
+   "oracle_passes": null,
+   "has_exploit_test": false,
+   "tokens": 5354,
+   "latency_s": 142.43220158992335,
+   "needs_review": 0
+  },
+  {
+   "id": "h_xss_markup",
+   "kind": "vulnerable",
+   "remediations": [
+    {
+     "case_class": "XSS",
+     "outcome": "verified",
+     "attempts": 1,
+     "real": true,
+     "tests_attempts": 1,
+     "tests_passed": 1,
+     "rescan_attempts": 1,
+     "rescan_passed": 1,
+     "failure": ""
+    }
+   ],
+   "oracle_passes": true,
+   "has_exploit_test": true,
+   "tokens": 2920,
+   "latency_s": 86.31632893090136,
+   "needs_review": 0
+  },
+  {
+   "id": "h_yaml_load",
+   "kind": "vulnerable",
+   "remediations": [
+    {
+     "case_class": "Insecure deserialization",
+     "outcome": "verified",
+     "attempts": 1,
+     "real": true,
+     "tests_attempts": 1,
+     "tests_passed": 1,
+     "rescan_attempts": 1,
+     "rescan_passed": 1,
+     "failure": ""
+    }
+   ],
+   "oracle_passes": null,
+   "has_exploit_test": false,
+   "tokens": 2941,
+   "latency_s": 63.988408361095935,
+   "needs_review": 1
+  }
+ ]
+}

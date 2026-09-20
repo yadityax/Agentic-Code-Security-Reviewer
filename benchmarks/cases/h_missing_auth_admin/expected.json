@@ -1,0 +1,18 @@
+{
+  "id": "h_missing_auth_admin",
+  "split": "heldout",
+  "description": "Admin endpoint reachable without authentication",
+  "kind": "vulnerable",
+  "vulns": [
+    {
+      "file": "app.py",
+      "line": 8,
+      "lines": [
+        8,
+        8
+      ],
+      "cwe": "CWE-306"
+    }
+  ],
+  "has_exploit_test": true
+}

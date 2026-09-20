@@ -1,0 +1,36 @@
+{
+  "id": "docker_misconfig",
+  "split": "dev",
+  "description": "Container: unpinned image tag, secret in ENV, no non-root USER (one ground-truth entry each)",
+  "kind": "vulnerable",
+  "vulns": [
+    {
+      "file": "Dockerfile",
+      "line": 1,
+      "lines": [
+        1,
+        1
+      ],
+      "cwe": "CWE-16"
+    },
+    {
+      "file": "Dockerfile",
+      "line": 3,
+      "lines": [
+        3,
+        3
+      ],
+      "cwe": "CWE-16"
+    },
+    {
+      "file": "Dockerfile",
+      "line": 6,
+      "lines": [
+        6,
+        6
+      ],
+      "cwe": "CWE-16"
+    }
+  ],
+  "has_exploit_test": false
+}

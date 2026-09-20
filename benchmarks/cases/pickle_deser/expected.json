@@ -1,0 +1,18 @@
+{
+  "id": "pickle_deser",
+  "split": "dev",
+  "description": "Unsafe deserialization of client data with pickle",
+  "kind": "vulnerable",
+  "vulns": [
+    {
+      "file": "app.py",
+      "line": 12,
+      "lines": [
+        12,
+        12
+      ],
+      "cwe": "CWE-502"
+    }
+  ],
+  "has_exploit_test": false
+}

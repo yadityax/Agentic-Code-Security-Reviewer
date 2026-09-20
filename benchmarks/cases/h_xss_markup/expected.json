@@ -1,0 +1,18 @@
+{
+  "id": "h_xss_markup",
+  "split": "heldout",
+  "description": "XSS by marking user input as safe Markup",
+  "kind": "vulnerable",
+  "vulns": [
+    {
+      "file": "app.py",
+      "line": 10,
+      "lines": [
+        10,
+        10
+      ],
+      "cwe": "CWE-79"
+    }
+  ],
+  "has_exploit_test": true
+}

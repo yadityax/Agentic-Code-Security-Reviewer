@@ -1,0 +1,19 @@
+# Deliberately vulnerable benchmark apps and scanner fixtures contain fake credentials on purpose.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "intentional fake secrets used to test the scanners"
+paths = [
+  '''benchmarks/cases/''',
+  '''benchmarks/build_corpus\.py''',
+  '''benchmarks/published/''',
+  '''tests/fixtures/''',
+  '''tests/unit/test_correlator_redact\.py''',
+  '''tests/unit/test_scanner_parsers\.py''',
+  '''tests/unit/test_mcp_server\.py''',
+  '''tests/unit/test_report_github\.py''',
+  '''tests/unit/test_remediation\.py''',
+  '''tests/security/''',
+  '''infra/scripts/demo\.py''',
+]

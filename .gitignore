@@ -1,0 +1,22 @@
+# benchmark repos are cloned, not committed
+benchmarks/.cache_final/
+benchmarks/.llm_cache/
+benchmarks/results/
+benchmarks/vulnerable_repos/*/
+codeql-db/
+.demo/
+.env
+.env.*
+!.env.example
+frontend/dist/
+.mypy_cache/
+node_modules/
+*.pyc
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.sarif
+# scanner artifacts / workspaces
+.tools/
+.venv/
+workspaces/

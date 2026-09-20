@@ -1,0 +1,18 @@
+{
+  "id": "cmdi_flask",
+  "split": "dev",
+  "description": "OS command injection via shell=True",
+  "kind": "vulnerable",
+  "vulns": [
+    {
+      "file": "app.py",
+      "line": 11,
+      "lines": [
+        11,
+        11
+      ],
+      "cwe": "CWE-78"
+    }
+  ],
+  "has_exploit_test": true
+}

@@ -1,0 +1,114 @@
+name: acsr
+
+# Core: postgres, redis, api, worker, docker-proxy, frontend
+# Optional: `--profile observability` adds Prometheus, Grafana and Jaeger.
+# Run through `make up` (it exports HOST_UID/HOST_GID and creates the workspace dir).
+
+x-app-env: &app-env
+  DATABASE_URL: postgresql+asyncpg://acsr:acsr@postgres:5432/acsr
+  REDIS_URL: redis://redis:6379/0
+  OTEL_EXPORTER_OTLP_ENDPOINT: ${OTEL_ENDPOINT:-}
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: acsr
+      POSTGRES_PASSWORD: acsr
+      POSTGRES_DB: acsr
+    ports: ["127.0.0.1:5433:5432"]
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U acsr -d acsr"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    ports: ["127.0.0.1:6380:6379"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  migrate:
+    build: { context: ., dockerfile: infra/docker/api.Dockerfile }
+    command: ["/app/.venv/bin/alembic", "upgrade", "head"]
+    environment: *app-env
+    depends_on: { postgres: { condition: service_healthy } }
+    restart: "no"
+
+  api:
+    build: { context: ., dockerfile: infra/docker/api.Dockerfile }
+    env_file: [{ path: .env, required: false }]
+    environment: *app-env
+    ports: ["127.0.0.1:8000:8000"]
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+      redis: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request as u; u.urlopen('http://localhost:8000/health')"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # Restricted view of the Docker API. The worker can create/start/kill/remove containers and inspect
+  # images, but cannot exec into containers, build images, manage networks/volumes or reach swarm/plugins.
+  docker-proxy:
+    image: tecnativa/docker-socket-proxy:0.3.0
+    environment: { CONTAINERS: 1, POST: 1, DELETE: 1, IMAGES: 1, VERSION: 1, PING: 1, EXEC: 0, BUILD: 0, VOLUMES: 0, NETWORKS: 0, SERVICES: 0, SWARM: 0, SECRETS: 0, INFO: 0 }
+    volumes: ["/var/run/docker.sock:/var/run/docker.sock:ro"]
+
+  worker:
+    build: { context: ., dockerfile: infra/docker/worker.Dockerfile }
+    user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
+    working_dir: ${PWD}
+    volumes: ["${PWD}:${PWD}"]        # same absolute path as on the host (see worker.Dockerfile)
+    env_file: [{ path: .env, required: false }]
+    environment:
+      <<: *app-env
+      HOME: /tmp
+      PYTHONPATH: ${PWD}
+      TMPDIR: ${PWD}/.workspaces
+      DOCKER_HOST: tcp://docker-proxy:2375
+      METRICS_PORT: 9100
+      GIT_BASE_URL: ${GIT_BASE_URL:-https://github.com}
+      GITHUB_OFFLINE: ${GITHUB_OFFLINE:-false}
+      ENABLE_REMEDIATION: ${ENABLE_REMEDIATION:-false}
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+      redis: { condition: service_healthy }
+      docker-proxy: { condition: service_started }
+
+  frontend:
+    build: { context: ., dockerfile: infra/docker/frontend.Dockerfile }
+    ports: ["127.0.0.1:8088:80"]
+    depends_on: [api]
+
+  prometheus:
+    profiles: ["observability"]
+    image: prom/prometheus:v2.55.1
+    volumes: ["./infra/observability/prometheus.yml:/etc/prometheus/prometheus.yml:ro"]
+    ports: ["127.0.0.1:9090:9090"]
+
+  grafana:
+    profiles: ["observability"]
+    image: grafana/grafana:11.3.0
+    environment: { GF_AUTH_ANONYMOUS_ENABLED: "true", GF_AUTH_ANONYMOUS_ORG_ROLE: Viewer, GF_SECURITY_ALLOW_EMBEDDING: "false" }
+    volumes:
+      - ./infra/observability/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./infra/observability/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    ports: ["127.0.0.1:3001:3000"]
+    depends_on: [prometheus]
+
+  jaeger:
+    profiles: ["observability"]
+    image: jaegertracing/all-in-one:1.62.0
+    environment: { COLLECTOR_OTLP_ENABLED: "true" }
+    ports: ["127.0.0.1:16686:16686"]
+
+volumes:
+  pgdata:
+  scanner-cache:

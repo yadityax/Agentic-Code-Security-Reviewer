@@ -1,0 +1,18 @@
+{
+  "id": "ssrf_requests",
+  "split": "dev",
+  "description": "SSRF: server fetches an arbitrary user-supplied URL",
+  "kind": "vulnerable",
+  "vulns": [
+    {
+      "file": "app.py",
+      "line": 10,
+      "lines": [
+        10,
+        10
+      ],
+      "cwe": "CWE-918"
+    }
+  ],
+  "has_exploit_test": true
+}

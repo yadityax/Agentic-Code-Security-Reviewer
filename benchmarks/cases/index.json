@@ -1,0 +1,198 @@
+[
+  {
+    "id": "sqli_flask",
+    "split": "dev",
+    "kind": "vulnerable",
+    "description": "SQL injection via f-string in a Flask route",
+    "n_vulns": 1
+  },
+  {
+    "id": "sqli_cli_input",
+    "split": "dev",
+    "kind": "vulnerable",
+    "description": "SQL injection with taint from input() (no web framework)",
+    "n_vulns": 1
+  },
+  {
+    "id": "xss_flask",
+    "split": "dev",
+    "kind": "vulnerable",
+    "description": "Reflected XSS and server-side template injection via a string-built template (both on one line)",
+    "n_vulns": 2
+  },
+  {
+    "id": "cmdi_flask",
+    "split": "dev",
+    "kind": "vulnerable",
+    "description": "OS command injection via shell=True",
+    "n_vulns": 1
+  },
+  {
+    "id": "path_traversal_flask",
+    "split": "dev",
+    "kind": "vulnerable",
+    "description": "Path traversal in file download",
+    "n_vulns": 1
+  },
+  {
+    "id": "ssrf_requests",
+    "split": "dev",
+    "kind": "vulnerable",
+    "description": "SSRF: server fetches an arbitrary user-supplied URL",
+    "n_vulns": 1
+  },
+  {
+    "id": "secrets_hardcoded",
+    "split": "dev",
+    "kind": "vulnerable",
+    "description": "Hardcoded cloud key and DB password",
+    "n_vulns": 2
+  },
+  {
+    "id": "weak_crypto_md5",
+    "split": "dev",
+    "kind": "vulnerable",
+    "description": "MD5 used to hash passwords",
+    "n_vulns": 1
+  },
+  {
+    "id": "pickle_deser",
+    "split": "dev",
+    "kind": "vulnerable",
+    "description": "Unsafe deserialization of client data with pickle",
+    "n_vulns": 1
+  },
+  {
+    "id": "idor_invoice",
+    "split": "dev",
+    "kind": "vulnerable",
+    "description": "IDOR: invoice returned without checking ownership",
+    "n_vulns": 1
+  },
+  {
+    "id": "vuln_deps",
+    "split": "dev",
+    "kind": "vulnerable",
+    "description": "Known-vulnerable pinned dependencies (flask, pyyaml, requests), all imported or used by the app",
+    "n_vulns": 3
+  },
+  {
+    "id": "docker_misconfig",
+    "split": "dev",
+    "kind": "vulnerable",
+    "description": "Container: unpinned image tag, secret in ENV, no non-root USER (one ground-truth entry each)",
+    "n_vulns": 3
+  },
+  {
+    "id": "safe_sql_param",
+    "split": "dev",
+    "kind": "safe",
+    "description": "SAFE: bound parameter; ORDER BY comes from an allow-list",
+    "n_vulns": 0
+  },
+  {
+    "id": "safe_subprocess_list",
+    "split": "dev",
+    "kind": "safe",
+    "description": "SAFE: allow-listed command, argument list, no shell",
+    "n_vulns": 0
+  },
+  {
+    "id": "safe_path_resolved",
+    "split": "dev",
+    "kind": "safe",
+    "description": "SAFE: resolved path verified to stay inside the base directory",
+    "n_vulns": 0
+  },
+  {
+    "id": "safe_env_secrets_yaml",
+    "split": "dev",
+    "kind": "safe",
+    "description": "SAFE: secrets from the environment, yaml.safe_load, placeholder value",
+    "n_vulns": 0
+  },
+  {
+    "id": "h_sqli_format",
+    "split": "heldout",
+    "kind": "vulnerable",
+    "description": "SQL injection via str.format",
+    "n_vulns": 1
+  },
+  {
+    "id": "h_cmdi_fastapi",
+    "split": "heldout",
+    "kind": "vulnerable",
+    "description": "Command injection via os.system in FastAPI",
+    "n_vulns": 1
+  },
+  {
+    "id": "h_xss_markup",
+    "split": "heldout",
+    "kind": "vulnerable",
+    "description": "XSS by marking user input as safe Markup",
+    "n_vulns": 1
+  },
+  {
+    "id": "h_ssrf_urllib",
+    "split": "heldout",
+    "kind": "vulnerable",
+    "description": "SSRF via urllib with user-supplied link",
+    "n_vulns": 1
+  },
+  {
+    "id": "h_yaml_load",
+    "split": "heldout",
+    "kind": "vulnerable",
+    "description": "yaml.load with the unsafe Loader on request data",
+    "n_vulns": 1
+  },
+  {
+    "id": "h_path_send_file",
+    "split": "heldout",
+    "kind": "vulnerable",
+    "description": "Path traversal through send_file with concatenated path",
+    "n_vulns": 1
+  },
+  {
+    "id": "h_missing_auth_admin",
+    "split": "heldout",
+    "kind": "vulnerable",
+    "description": "Admin endpoint reachable without authentication",
+    "n_vulns": 1
+  },
+  {
+    "id": "h_weak_random_token",
+    "split": "heldout",
+    "kind": "vulnerable",
+    "description": "Password-reset token from the non-cryptographic random module",
+    "n_vulns": 1
+  },
+  {
+    "id": "h_safe_orm",
+    "split": "heldout",
+    "kind": "safe",
+    "description": "SAFE: SQLAlchemy ORM expression",
+    "n_vulns": 0
+  },
+  {
+    "id": "h_safe_html_escape",
+    "split": "heldout",
+    "kind": "safe",
+    "description": "SAFE: output escaped with html.escape",
+    "n_vulns": 0
+  },
+  {
+    "id": "h_safe_test_secret",
+    "split": "heldout",
+    "kind": "safe",
+    "description": "SAFE: obviously fake token confined to a test file",
+    "n_vulns": 0
+  },
+  {
+    "id": "h_safe_sha256",
+    "split": "heldout",
+    "kind": "safe",
+    "description": "SAFE: SHA-256 used for an ETag",
+    "n_vulns": 0
+  }
+]

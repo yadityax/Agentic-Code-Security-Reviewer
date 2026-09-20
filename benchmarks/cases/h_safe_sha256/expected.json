@@ -1,0 +1,8 @@
+{
+  "id": "h_safe_sha256",
+  "split": "heldout",
+  "description": "SAFE: SHA-256 used for an ETag",
+  "kind": "safe",
+  "vulns": [],
+  "has_exploit_test": false
+}

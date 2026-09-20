@@ -1,0 +1,18 @@
+{
+  "id": "sqli_cli_input",
+  "split": "dev",
+  "description": "SQL injection with taint from input() (no web framework)",
+  "kind": "vulnerable",
+  "vulns": [
+    {
+      "file": "app.py",
+      "line": 9,
+      "lines": [
+        9,
+        9
+      ],
+      "cwe": "CWE-89"
+    }
+  ],
+  "has_exploit_test": true
+}

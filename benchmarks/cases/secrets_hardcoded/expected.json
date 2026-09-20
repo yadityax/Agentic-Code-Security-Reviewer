@@ -1,0 +1,27 @@
+{
+  "id": "secrets_hardcoded",
+  "split": "dev",
+  "description": "Hardcoded cloud key and DB password",
+  "kind": "vulnerable",
+  "vulns": [
+    {
+      "file": "config.py",
+      "line": 1,
+      "lines": [
+        1,
+        1
+      ],
+      "cwe": "CWE-798"
+    },
+    {
+      "file": "config.py",
+      "line": 2,
+      "lines": [
+        2,
+        2
+      ],
+      "cwe": "CWE-798"
+    }
+  ],
+  "has_exploit_test": false
+}

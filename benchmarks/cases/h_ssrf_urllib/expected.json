@@ -1,0 +1,18 @@
+{
+  "id": "h_ssrf_urllib",
+  "split": "heldout",
+  "description": "SSRF via urllib with user-supplied link",
+  "kind": "vulnerable",
+  "vulns": [
+    {
+      "file": "app.py",
+      "line": 11,
+      "lines": [
+        11,
+        11
+      ],
+      "cwe": "CWE-918"
+    }
+  ],
+  "has_exploit_test": true
+}

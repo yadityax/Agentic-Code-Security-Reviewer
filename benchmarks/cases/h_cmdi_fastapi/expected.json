@@ -1,0 +1,18 @@
+{
+  "id": "h_cmdi_fastapi",
+  "split": "heldout",
+  "description": "Command injection via os.system in FastAPI",
+  "kind": "vulnerable",
+  "vulns": [
+    {
+      "file": "main.py",
+      "line": 10,
+      "lines": [
+        10,
+        10
+      ],
+      "cwe": "CWE-78"
+    }
+  ],
+  "has_exploit_test": false
+}

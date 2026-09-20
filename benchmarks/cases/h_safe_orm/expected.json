@@ -1,0 +1,8 @@
+{
+  "id": "h_safe_orm",
+  "split": "heldout",
+  "description": "SAFE: SQLAlchemy ORM expression",
+  "kind": "safe",
+  "vulns": [],
+  "has_exploit_test": false
+}

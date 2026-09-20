@@ -1,0 +1,392 @@
+{
+ "summary": {
+  "targets_real": 18,
+  "targets_false_alarm": 0,
+  "fix_success_rate": 0.7777777777777778,
+  "exploit_oracle_pass_rate": 0.8333333333333334,
+  "oracle_cases": 6,
+  "post_fix_test_pass_rate": 0.9444444444444444,
+  "security_rescan_pass_rate": 0.8235294117647058,
+  "avg_attempts_per_target": 1.6111111111111112,
+  "human_intervention_rate": 0.3,
+  "by_class": {
+   "Broken access control": {
+    "targets": 1,
+    "verified": 1
+   },
+   "CWE-352": {
+    "targets": 1,
+    "verified": 1
+   },
+   "Command injection": {
+    "targets": 1,
+    "verified": 1
+   },
+   "Container misconfig": {
+    "targets": 4,
+    "verified": 4
+   },
+   "Hardcoded secrets": {
+    "targets": 2,
+    "verified": 1
+   },
+   "Insecure deserialization": {
+    "targets": 1,
+    "verified": 0
+   },
+   "Path traversal": {
+    "targets": 1,
+    "verified": 1
+   },
+   "SQL injection": {
+    "targets": 2,
+    "verified": 2
+   },
+   "SSRF": {
+    "targets": 1,
+    "verified": 0
+   },
+   "Vulnerable dependency": {
+    "targets": 3,
+    "verified": 3
+   },
+   "Weak crypto": {
+    "targets": 1,
+    "verified": 0
+   }
+  },
+  "tokens_per_case": 4627.666666666667,
+  "latency_per_case_s": 136.7933960907394
+ },
+ "cases": [
+  {
+   "id": "cmdi_flask",
+   "kind": "vulnerable",
+   "remediations": [
+    {
+     "case_class": "Command injection",
+     "outcome": "verified",
+     "attempts": 1,
+     "real": true,
+     "tests_attempts": 1,
+     "tests_passed": 1,
+     "rescan_attempts": 1,
+     "rescan_passed": 1,
+     "failure": ""
+    }
+   ],
+   "oracle_passes": true,
+   "has_exploit_test": true,
+   "tokens": 2606,
+   "latency_s": 99.70668559102342,
+   "needs_review": 0
+  },
+  {
+   "id": "docker_misconfig",
+   "kind": "vulnerable",
+   "remediations": [
+    {
+     "case_class": "Container misconfig",
+     "outcome": "verified",
+     "attempts": 2,
+     "real": true,
+     "tests_attempts": 2,
+     "tests_passed": 2,
+     "rescan_attempts": 2,
+     "rescan_passed": 1,
+     "failure": "the security rescan still reports the original issue:\nDockerfile:1 CWE-16 Image user should not be 'root'\nDockerfile:1 CWE-16 ':latest' tag used\nDockerfile:1 CW"
+    },
+    {
+     "case_class": "Container misconfig",
+     "outcome": "verified",
+     "attempts": 1,
+     "real": true,
+     "tests_attempts": 1,
+     "tests_passed": 1,
+     "rescan_attempts": 1,
+     "rescan_passed": 1,
+     "failure": ""
+    },
+    {
+     "case_class": "Container misconfig",
+     "outcome": "verified",
+     "attempts": 1,
+     "real": true,
+     "tests_attempts": 1,
+     "tests_passed": 1,
+     "rescan_attempts": 1,
+     "rescan_passed": 1,
+     "failure": ""
+    },
+    {
+     "case_class": "Container misconfig",
+     "outcome": "verified",
+     "attempts": 2,
+     "real": true,
+     "tests_attempts": 2,
+     "tests_passed": 2,
+     "rescan_attempts": 2,
+     "rescan_passed": 1,
+     "failure": "the security rescan still reports the original issue:\nDockerfile:8 CWE-16 'apt-get' missing '--no-install-recommends'"
+    }
+   ],
+   "oracle_passes": null,
+   "has_exploit_test": false,
+   "tokens": 9228,
+   "latency_s": 344.963527305983,
+   "needs_review": 0
+  },
+  {
+   "id": "idor_invoice",
+   "kind": "vulnerable",
+   "remediations": [
+    {
+     "case_class": "Broken access control",
+     "outcome": "verified",
+     "attempts": 1,
+     "real": true,
+     "tests_attempts": 1,
+     "tests_passed": 1,
+     "rescan_attempts": 1,
+     "rescan_passed": 1,
+     "failure": ""
+    }
+   ],
+   "oracle_passes": true,
+   "has_exploit_test": true,
+   "tokens": 2389,
+   "latency_s": 40.59963645879179,
+   "needs_review": 0
+  },
+  {
+   "id": "path_traversal_flask",
+   "kind": "vulnerable",
+   "remediations": [
+    {
+     "case_class": "Path traversal",
+     "outcome": "verified",
+     "attempts": 2,
+     "real": true,
+     "tests_attempts": 1,
+     "tests_passed": 1,
+     "rescan_attempts": 1,
+     "rescan_passed": 1,
+     "failure": "`old` text was not found exactly once in app.py; copy it verbatim from the file"
+    }
+   ],
+   "oracle_passes": true,
+   "has_exploit_test": true,
+   "tokens": 4261,
+   "latency_s": 121.39647436095402,
+   "needs_review": 0
+  },
+  {
+   "id": "pickle_deser",
+   "kind": "vulnerable",
+   "remediations": [
+    {
+     "case_class": "Insecure deserialization",
+     "outcome": "failed",
+     "attempts": 3,
+     "real": true,
+     "tests_attempts": 0,
+     "tests_passed": 0,
+     "rescan_attempts": 0,
+     "rescan_passed": 0,
+     "failure": "`old` text was not found exactly once in app.py; copy it verbatim from the file\n`old` text was not found exactly once in app.py; copy it verbatim from the file"
+    },
+    {
+     "case_class": "CWE-352",
+     "outcome": "verified",
+     "attempts": 2,
+     "real": true,
+     "tests_attempts": 1,
+     "tests_passed": 1,
+     "rescan_attempts": 1,
+     "rescan_passed": 1,
+     "failure": "line 12 of app.py does not start with '    obj = pickle.loads(blob)'; give `starts_with` exactly as the line begins"
+    }
+   ],
+   "oracle_passes": null,
+   "has_exploit_test": false,
+   "tokens": 9358,
+   "latency_s": 188.57820658083074,
+   "needs_review": 0
+  },
+  {
+   "id": "secrets_hardcoded",
+   "kind": "vulnerable",
+   "remediations": [
+    {
+     "case_class": "Hardcoded secrets",
+     "outcome": "verified",
+     "attempts": 1,
+     "real": true,
+     "tests_attempts": 1,
+     "tests_passed": 1,
+     "rescan_attempts": 1,
+     "rescan_passed": 1,
+     "failure": ""
+    },
+    {
+     "case_class": "Hardcoded secrets",
+     "outcome": "failed",
+     "attempts": 3,
+     "real": true,
+     "tests_attempts": 0,
+     "tests_passed": 0,
+     "rescan_attempts": 0,
+     "rescan_passed": 0,
+     "failure": "line 5 of config.py does not start with ''; give `starts_with` exactly as the line begins"
+    }
+   ],
+   "oracle_passes": null,
+   "has_exploit_test": false,
+   "tokens": 7689,
+   "latency_s": 164.09647337300703,
+   "needs_review": 0
+  },
+  {
+   "id": "sqli_cli_input",
+   "kind": "vulnerable",
+   "remediations": [
+    {
+     "case_class": "SQL injection",
+     "outcome": "verified",
+     "attempts": 1,
+     "real": true,
+     "tests_attempts": 1,
+     "tests_passed": 1,
+     "rescan_attempts": 1,
+     "rescan_passed": 1,
+     "failure": ""
+    }
+   ],
+   "oracle_passes": true,
+   "has_exploit_test": true,
+   "tokens": 2974,
+   "latency_s": 117.76478764996864,
+   "needs_review": 0
+  },
+  {
+   "id": "sqli_flask",
+   "kind": "vulnerable",
+   "remediations": [
+    {
+     "case_class": "SQL injection",
+     "outcome": "verified",
+     "attempts": 1,
+     "real": true,
+     "tests_attempts": 1,
+     "tests_passed": 1,
+     "rescan_attempts": 1,
+     "rescan_passed": 1,
+     "failure": ""
+    }
+   ],
+   "oracle_passes": true,
+   "has_exploit_test": true,
+   "tokens": 2634,
+   "latency_s": 139.8316426440142,
+   "needs_review": 0
+  },
+  {
+   "id": "ssrf_requests",
+   "kind": "vulnerable",
+   "remediations": [
+    {
+     "case_class": "SSRF",
+     "outcome": "failed",
+     "attempts": 3,
+     "real": true,
+     "tests_attempts": 1,
+     "tests_passed": 1,
+     "rescan_attempts": 1,
+     "rescan_passed": 0,
+     "failure": "the security rescan still reports the original issue:\napp.py:23 CWE-918 Full server-side request forgery"
+    }
+   ],
+   "oracle_passes": false,
+   "has_exploit_test": true,
+   "tokens": 7478,
+   "latency_s": 177.64337196201086,
+   "needs_review": 0
+  },
+  {
+   "id": "vuln_deps",
+   "kind": "vulnerable",
+   "remediations": [
+    {
+     "case_class": "Vulnerable dependency",
+     "outcome": "verified",
+     "attempts": 1,
+     "real": true,
+     "tests_attempts": 1,
+     "tests_passed": 1,
+     "rescan_attempts": 1,
+     "rescan_passed": 1,
+     "failure": ""
+    },
+    {
+     "case_class": "Vulnerable dependency",
+     "outcome": "verified",
+     "attempts": 1,
+     "real": true,
+     "tests_attempts": 1,
+     "tests_passed": 1,
+     "rescan_attempts": 1,
+     "rescan_passed": 1,
+     "failure": ""
+    },
+    {
+     "case_class": "Vulnerable dependency",
+     "outcome": "verified",
+     "attempts": 1,
+     "real": true,
+     "tests_attempts": 1,
+     "tests_passed": 1,
+     "rescan_attempts": 1,
+     "rescan_passed": 1,
+     "failure": ""
+    }
+   ],
+   "oracle_passes": null,
+   "has_exploit_test": false,
+   "tokens": 964,
+   "latency_s": 106.54602549807169,
+   "needs_review": 0
+  },
+  {
+   "id": "weak_crypto_md5",
+   "kind": "vulnerable",
+   "remediations": [
+    {
+     "case_class": "Weak crypto",
+     "outcome": "declined",
+     "attempts": 2,
+     "real": true,
+     "tests_attempts": 1,
+     "tests_passed": 0,
+     "rescan_attempts": 0,
+     "rescan_passed": 0,
+     "failure": "LLM unavailable: rate limit exhausted (retry in 919s): {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organiz"
+    }
+   ],
+   "oracle_passes": null,
+   "has_exploit_test": false,
+   "tokens": 5951,
+   "latency_s": 94.43158095516264,
+   "needs_review": 0
+  },
+  {
+   "id": "xss_flask",
+   "kind": "vulnerable",
+   "remediations": [],
+   "oracle_passes": false,
+   "has_exploit_test": true,
+   "tokens": 0,
+   "latency_s": 45.96234070905484,
+   "needs_review": 2
+  }
+ ]
+}

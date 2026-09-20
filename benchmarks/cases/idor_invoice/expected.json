@@ -1,0 +1,18 @@
+{
+  "id": "idor_invoice",
+  "split": "dev",
+  "description": "IDOR: invoice returned without checking ownership",
+  "kind": "vulnerable",
+  "vulns": [
+    {
+      "file": "app.py",
+      "line": 15,
+      "lines": [
+        15,
+        15
+      ],
+      "cwe": "CWE-639"
+    }
+  ],
+  "has_exploit_test": true
+}

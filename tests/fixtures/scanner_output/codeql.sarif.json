@@ -1,0 +1,6 @@
+{"runs":[{"tool":{"driver":{"rules":[
+ {"id":"py/sql-injection","shortDescription":{"text":"SQL query built from user-controlled sources"},"properties":{"tags":["security","external/cwe/cwe-089"],"security-severity":"8.8"}},
+ {"id":"py/command-line-injection","shortDescription":{"text":"Uncontrolled command line"},"properties":{"tags":["security","external/cwe/cwe-078"],"security-severity":"9.8"}}]}},
+ "results":[
+ {"ruleId":"py/sql-injection","level":"error","message":{"text":"This SQL query depends on a user-provided value."},"locations":[{"physicalLocation":{"artifactLocation":{"uri":"app.py"},"region":{"startLine":15}}}]},
+ {"ruleId":"py/command-line-injection","level":"error","message":{"text":"This command line depends on a user-provided value."},"locations":[{"physicalLocation":{"artifactLocation":{"uri":"app.py"},"region":{"startLine":21,"endLine":21}}}]}]}]}

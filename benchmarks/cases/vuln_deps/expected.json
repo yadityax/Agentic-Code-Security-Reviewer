@@ -1,0 +1,36 @@
+{
+  "id": "vuln_deps",
+  "split": "dev",
+  "description": "Known-vulnerable pinned dependencies (flask, pyyaml, requests), all imported or used by the app",
+  "kind": "vulnerable",
+  "vulns": [
+    {
+      "file": "requirements.txt",
+      "line": 1,
+      "lines": [
+        1,
+        1
+      ],
+      "cwe": "CWE-1104"
+    },
+    {
+      "file": "requirements.txt",
+      "line": 2,
+      "lines": [
+        2,
+        2
+      ],
+      "cwe": "CWE-1104"
+    },
+    {
+      "file": "requirements.txt",
+      "line": 3,
+      "lines": [
+        3,
+        3
+      ],
+      "cwe": "CWE-1104"
+    }
+  ],
+  "has_exploit_test": false
+}

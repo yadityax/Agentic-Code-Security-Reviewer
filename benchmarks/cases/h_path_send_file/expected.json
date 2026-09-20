@@ -1,0 +1,18 @@
+{
+  "id": "h_path_send_file",
+  "split": "heldout",
+  "description": "Path traversal through send_file with concatenated path",
+  "kind": "vulnerable",
+  "vulns": [
+    {
+      "file": "app.py",
+      "line": 8,
+      "lines": [
+        8,
+        8
+      ],
+      "cwe": "CWE-22"
+    }
+  ],
+  "has_exploit_test": false
+}

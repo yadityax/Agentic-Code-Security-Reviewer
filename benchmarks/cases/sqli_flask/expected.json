@@ -1,0 +1,18 @@
+{
+  "id": "sqli_flask",
+  "split": "dev",
+  "description": "SQL injection via f-string in a Flask route",
+  "kind": "vulnerable",
+  "vulns": [
+    {
+      "file": "app.py",
+      "line": 14,
+      "lines": [
+        14,
+        14
+      ],
+      "cwe": "CWE-89"
+    }
+  ],
+  "has_exploit_test": true
+}

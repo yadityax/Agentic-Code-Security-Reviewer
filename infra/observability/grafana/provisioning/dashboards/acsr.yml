@@ -1,0 +1,6 @@
+apiVersion: 1
+providers:
+  - name: acsr
+    folder: Security Reviewer
+    type: file
+    options: { path: /var/lib/grafana/dashboards }

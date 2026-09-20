@@ -1,0 +1,10 @@
+.git
+.venv
+.tools
+.workspaces
+.env
+frontend/node_modules
+frontend/dist
+benchmarks/results
+benchmarks/.llm_cache
+**/__pycache__

@@ -1,0 +1,27 @@
+{
+  "id": "xss_flask",
+  "split": "dev",
+  "description": "Reflected XSS and server-side template injection via a string-built template (both on one line)",
+  "kind": "vulnerable",
+  "vulns": [
+    {
+      "file": "app.py",
+      "line": 9,
+      "lines": [
+        9,
+        9
+      ],
+      "cwe": "CWE-79"
+    },
+    {
+      "file": "app.py",
+      "line": 9,
+      "lines": [
+        9,
+        9
+      ],
+      "cwe": "CWE-1336"
+    }
+  ],
+  "has_exploit_test": true
+}

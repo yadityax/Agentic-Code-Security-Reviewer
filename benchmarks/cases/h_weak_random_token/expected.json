@@ -1,0 +1,18 @@
+{
+  "id": "h_weak_random_token",
+  "split": "heldout",
+  "description": "Password-reset token from the non-cryptographic random module",
+  "kind": "vulnerable",
+  "vulns": [
+    {
+      "file": "tokens.py",
+      "line": 7,
+      "lines": [
+        7,
+        7
+      ],
+      "cwe": "CWE-330"
+    }
+  ],
+  "has_exploit_test": false
+}
